@@ -1,5 +1,24 @@
 BEST_CONFIGS = {
     "node_classification": {
+        'HGAdapter': {
+            'general': {'seed': 0, 'patience': 30, 'mini_batch_flag': False},
+            'acm4HGAdapter': {
+                'lr': 0.0075, 'embedding_dim': 256, 'bottleneck_dim': 8,
+                'hetero_bottleneck_dim': 16, 'max_epoch': 200,
+            },
+            'dblp4HGAdapter': {
+                'lr': 0.00025, 'embedding_dim': 512, 'bottleneck_dim': 2,
+                'hetero_bottleneck_dim': 4, 'max_epoch': 1000,
+            },
+            'yelp4HGAdapter': {
+                'lr': 0.01, 'embedding_dim': 128, 'bottleneck_dim': 4,
+                'hetero_bottleneck_dim': 8, 'max_epoch': 500,
+            },
+            'aminer4HGAdapter': {
+                'lr': 0.0005, 'embedding_dim': 256, 'bottleneck_dim': 4,
+                'hetero_bottleneck_dim': 64, 'max_epoch': 500,
+            },
+        },
         'RGCN': {
             'general': {
                 'seed': 0, 'patience': 40, 'validation': True, 'evaluation_metric': 'acc'
@@ -323,6 +342,10 @@ BEST_CONFIGS = {
                 'hidden_dim': 384, 'num_layers': 2,'model_lr':0.05, 'lr': 0.005, 'weight_decay': 0.0005, 'max_epoch': 200, 
             },
         },
+        'SEHTGNN': {
+            'general':{},
+            'sehtgnn_yelp':{'lr': 0.005, 'weight_decay': 0.0001, 'dropout': 0.6, 'hidden_dim': 32, 'num_layers': 2, 'time_window': 12, 'norm': True, 'patience': 50, 'max_epoch': 500, 'num_classes': 3, 'use_uva': True},
+        },
 
     },
 
@@ -483,6 +506,11 @@ BEST_CONFIGS = {
                 'hidden_dim': 384, 'num_layers': 2, 'lr': 0.0001, 'weight_decay': 0.0005, 'max_epoch': 500, 
             },
         },
+        'SEHTGNN': {
+            'general':{'lr': 0.005, 'weight_decay': 0.0001, 'dropout': 0.3, 'hidden_dim': 32, 'num_layers': 2, 'norm': True, 'patience': 25, 'use_uva': True},
+            'sehtgnn_ogbn':{'time_window': 3, 'max_epoch': 500},
+            'sehtgnn_aminer':{'time_window': 9, 'max_epoch': 200},
+        },
     },
     "recommendation": {
         'KGCN': {
@@ -500,5 +528,11 @@ BEST_CONFIGS = {
                 'lr': 0.001, 'patience':10, 'max_epoch': 1000, 'hid_dim':128, 'evaluation_metric':'ndcg', 'evaluate_interval':10, 'batch_size':3072, 'max_epoch':1000
             },
         }
-    }
+    },
+    "node_regression": {
+        'SEHTGNN': {
+            "general": {},
+            'sehtgnn_covid':{'lr': 0.005, 'weight_decay': 0.0001, 'dropout': 0.0, 'hidden_dim': 32, 'num_layers': 1, 'time_window': 7, 'norm': False, 'patience': 5, 'max_epoch': 200, 'use_uva': True},
+        }
+    },
 }

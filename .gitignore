@@ -158,9 +158,14 @@ cython_debug/
 
 # downloaded data
 *.zip
+openhgnn/dataset/HGAdapter/
+openhgnn/output/HGAdapter/*.pt
 *.bin
 *.pt
 *.mat
+*.tar.gz
+*.csv.gz
+openhgnn/dataset/data/*
 
 # numpy files
 *.npy
